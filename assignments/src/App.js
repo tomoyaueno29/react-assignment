@@ -20,16 +20,13 @@ class App extends Component {
     let validate = null;
 
     if(this.state.textLength >= 5){
-      validate=(
-        <p>Text long enough</p>
-      )
+      
+      validate = <p>Text long enough</p>
     }
     
     if(this.state.textLength < 5){
 
-      validate=(
-        <p>Text long too short</p>
-      )
+      validate = <p>Text long too short</p>
     }
     
 
@@ -39,6 +36,9 @@ class App extends Component {
         type="text" 
         onChange={this.inputChangeHandler} 
         value={this.state.userInput}
+        />
+        <Validate
+          text={this.state.userInput}
         />
         <p>{validate}</p>
       </div>
