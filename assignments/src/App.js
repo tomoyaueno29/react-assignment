@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Validate from './Validate/Validate'
+import Char from './Char/Char'
 
 class App extends Component {
   state = {
@@ -15,12 +16,25 @@ class App extends Component {
     })
   }
 
+  deleteCgarHandler = (index) => {
+    console.log('clicked');
+  }
+
   
   render() {
+    const charList = this.state.userInput.split('').map((ch, index) => {
+      return <Char 
+              character = {ch}
+              key = {index}
+              click = {() => this.deleteCgarHandler(index)}
+            />
+    })
+
+
     let validate = null;
 
     if(this.state.textLength >= 5){
-      
+
       validate = <p>Text long enough</p>
     }
     
@@ -40,6 +54,7 @@ class App extends Component {
         <Validate
           text={this.state.userInput}
         />
+        {charList}
         <p>{validate}</p>
       </div>
     );
