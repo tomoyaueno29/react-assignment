@@ -18,6 +18,14 @@ class App extends Component {
 
   deleteCgarHandler = (index) => {
     console.log('clicked');
+    const text = this.state.userInput.split('')
+    console.log(text[index]);
+    text.splice(index, 1)
+    const updatedText = text.join('');
+    
+    this.setState({
+      userInput: updatedText
+    })
   }
 
   
